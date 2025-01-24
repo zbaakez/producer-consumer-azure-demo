@@ -5,7 +5,7 @@ This is done as an exercise.
 This example deploys 3 .NET services into Azure Container Apps,
 which connect to a CosmosDB for data storing.
 
-The application consists of 3 (micro-)services:\
+The application consists of 3 (micro-)services:
 - Frontend Service (Blazor .NET): retrieves data from the database service, and requests the producer to produce more data
 - Produce Service (.NET): produces data and sends it to the database service
 - Database Service (.NET): Connects to a CosmosDB NoSQL DB and queries and stores data.
@@ -53,6 +53,7 @@ In the Overview of the database-service-app Container App we get the URI of the 
 In the Producer Service we have to change one line of code to match this URI.
 
 Now create the image for the produce service and push it to DockerHub (in my case: zbaaakez/produce-service-image:latest).
+
 2. Produce Service (Container App):
     - Mostly default settings.
     - Set 'produce-service-app' as Container App Name.
@@ -65,6 +66,7 @@ In the Overview of the produce-service-app Container App we get the URI of the s
 In the Frontend Service we have to change two lines of code to match the URIs of the Database Service and Produce Service.
 
 Now create the image for the frontend service and push it to DockerHub (in my case: zbaaakez/frontend-service-image:latest).
+
 3. Frontend-Service
    - Mostly default settings.
    - Set 'frontend-service-app' as Container App Name.
