@@ -1,4 +1,6 @@
 # producer-consumer-azure-demo
+### Name: Philipp Olivotto, StudentID: k12223453
+
 This is a produce-consumer demo with a frontend, deployed in Azure, following a small microservice architecture  (3 services). 
 This is done as an exercise.
 
