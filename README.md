@@ -85,7 +85,7 @@ In my case that is: https://frontend-service-app.ambitiousmoss-94b84a66.westeuro
 Feel free to play around (as long as this is online).
 
 ## What's (could be) next? / Lessons Learned
-A lot of manual steps are needed -> CI/CD (with GitHub Actions,...).
+A lot of manual steps are needed -> CI/CD (with GitHub Actions,...) and configuration files should be used to avoid this.
 
 Azure Container Apps seem powerful but a new thing to learn, maybe an AKS Cluster would have been fine.
 But the setup of the services with Container Apps worked without big problems for this example.
@@ -96,17 +96,17 @@ Compared to GCP, Azure felt more complex with way more features. But I would nee
 
 ## Example Overview
 Example Flow:
-Click "Produce Data" Button on Website -> calls "/produce" of the Produce Service
-"/produce" produces 10 data items and sends each of them to "/store-data" of the Database Service.
-The Database services stores the data items to the CosmosDB container.
-"/produce" returns the number of successful data items that were produced.
+Click "Produce Data" Button on Website -> calls "/produce" of the Produce Service.\
+"/produce" produces 10 data items and sends each of them to "/store-data" of the Database Service.\
+The Database services stores the data items to the CosmosDB container.\
+"/produce" returns the number of successful data items that were produced.\
 The frontend shows how many data items were produced.
 
-Click "Consume Data" Button on Website -> calls "/get-data" of the Database service.
-The Database service retrieves the 10 oldest data items WHERE consumed = false (if possible -> otherwise less data items).
-The data items that were consumed are updated to consumed = true by the Database service.
-The Database service returns the data items (as List).
-The frontend services shows the JSON data.
+Click "Consume Data" Button on Website -> calls "/get-data" of the Database service.\
+The Database service retrieves the 10 oldest data items WHERE consumed = false (if possible -> otherwise less data items).\
+The data items that were consumed are updated to consumed = true by the Database service.\
+The Database service returns the data items (as List).\
+The frontend services shows the JSON data.\
 
 Website example:
 ![website_example](imgs/app_overview.jpg)
