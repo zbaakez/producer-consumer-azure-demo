@@ -1,0 +1,83 @@
+﻿@page "/"
+@using System.Net
+@using System.Text.Json
+
+@rendermode InteractiveServer
+
+<PageTitle>Consumer</PageTitle>
+
+<h1>Welcome to the Application</h1>
+
+<h2>This is a small demo application for a very small Microservice architecture in Azure.</h2>
+<h2>There are three services: Consumer (Frontend), Producer-Service, Database-Service. As Database CosmosDB is used.</h2>
+<h2>The .NET services run in Azure Container Apps.</h2>
+
+<h2>This is a simple Web Application, that requests data from a Database Service.</h2>
+
+<h2>To produce new Data (tries to create 10 data items), click this Button:</h2>
+<button @onclick="@ProduceDataClick">Produce Data</button>
+<h2>@ProducedCountData</h2>
+<h2>This calls the endpoint /produce from "Produce Service", which then produces new data, which is sent to a "Database Service", which stores this Data in a CosmosDB on Azure.</h2>
+
+<h2>To consume 50 data items, click this Button:</h2>
+<button @onclick="@ConsumeData">Consume Data</button>
+
+<h2>This calls the endpoint /get-data from "Database Service", which then retrieves 10 data items from the CosmosDB on Azure.</h2>
+<h2>@DynamicData</h2>
+
+
+@code {
+    private void ProduceDataClick()
+    {
+        using (var client = new HttpClient()) // API Call to Producer Service
+        {
+            Console.WriteLine("Calling Producer Service: /produce");
+            client.BaseAddress = new Uri("https://produce-service-app.internal.ambitiousmoss-94b84a66.westeurope.azurecontainerapps.io");
+            var response = client.GetAsync("/produce").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var res = JsonDocument.Parse(response.Content.ReadAsStringAsync().Result);
+                string countOutput = "Data produced: " + res.RootElement.GetProperty("producedCount");
+                Console.WriteLine(countOutput);
+                ProducedCountData = countOutput;
+            }
+            else
+            {
+                Console.WriteLine("Data production failed");
+                ProducedCountData = "Data production failed";
+            }
+        }
+    }
+    
+    private void ConsumeData()
+    {
+        using (var client = new HttpClient()) // API Call to DataBase Service
+        {
+            Console.WriteLine("Calling Database Service: /get-data");
+            client.BaseAddress = new Uri("https://database-service-app.internal.ambitiousmoss-94b84a66.westeurope.azurecontainerapps.io");
+            var response = client.GetAsync("/get-data").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                if (response.StatusCode == HttpStatusCode.NoContent) 
+                {
+                    Console.WriteLine("No data available");
+                    DynamicData = "No data available. Try producing data first.";
+                    return;
+                }
+                var res = JsonDocument.Parse(response.Content.ReadAsStringAsync().Result).RootElement;
+                DynamicData = res.ToString();
+                Console.WriteLine("Response data: " + res);
+            }
+            else
+            {
+                Console.WriteLine("Data retrieval failed");
+                DynamicData = "Data retrieval failed";
+            }
+        }
+    }
+    
+    public string DynamicData { get; set; } = "No Data yet";
+    
+    public string ProducedCountData { get; set; } = "";
+    
+}

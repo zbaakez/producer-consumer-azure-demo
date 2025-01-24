@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "h11IjX3riwLcQRTBPZ/L4g7IqgRrD46IHpDjCXX0Upw=",
+  "Source": "DatabaseService",
+  "BasePath": "_content/DatabaseService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

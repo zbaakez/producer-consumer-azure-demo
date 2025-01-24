@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\phili\\GitHub\\producer-consumer-azure-demo\\FrontendConsumer\\FrontendConsumer\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\FrontendConsumer.bundle.scp.css",
+      "PackagePath": "staticwebassets\\FrontendConsumer.cycxjkehvd.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\phili\\GitHub\\producer-consumer-azure-demo\\FrontendConsumer\\FrontendConsumer\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.FrontendConsumer.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.FrontendConsumer.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.FrontendConsumer.props",
+      "PackagePath": "build\\FrontendConsumer.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.FrontendConsumer.props",
+      "PackagePath": "buildMultiTargeting\\FrontendConsumer.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.FrontendConsumer.props",
+      "PackagePath": "buildTransitive\\FrontendConsumer.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
